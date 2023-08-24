@@ -43,6 +43,22 @@ public class Java_final_taller {
         System.out.println("");
         mostrarVagones(vagonPueblo, "P");
          */
+        // Mostrar boletos
+        int opcion = mostrarCategoriasBoleto();
+
+        switch (opcion) {
+            case 1:
+                break;
+            case 2:
+                break;
+            case 3:
+                break;
+            case 4:
+                salir();
+                break;
+            default:
+                salir();
+        }
     }
 
     public static void mostrarVagones(String[][] pm_array, String pm_tipo) {
@@ -71,12 +87,18 @@ public class Java_final_taller {
         System.out.println("1. Turista - $100");
         System.out.println("2. VIP     - $80");
         System.out.println("3. Pueblo  - $10");
+        System.out.println("4. Salir");
 
         do {
             System.out.println("Ingrese el tipo de vagon (1-3):");
             pm_opcion = scanner.nextInt();
-        } while (pm_opcion < 1 || pm_opcion > 3);
+        } while (pm_opcion < 1 || pm_opcion > 4);
 
         return pm_opcion;
+    }
+
+    public static void salir() {
+        System.out.println("Fin del programa.");
+        System.exit(0);
     }
 }
