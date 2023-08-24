@@ -20,44 +20,44 @@ public class Java_final_taller {
 
         // Dimensiones de vagones
         String[][] vagonTurista = {
-            {"", "", ""},
-            {"", "", ""},
-            {"", "", ""}
+            {"T01", "T02", "T03"},
+            {"T05", "T06", "T07"},
+            {"T07", "T08", "T09"}
         };
         String[][] vagonVIP = {
-            {"", "", "", ""},
-            {"", "", "", ""},
-            {"", "", "", ""}
+            {"V01", "V02", "V03", "V04"},
+            {"V05", "V06", "V07", "V08"},
+            {"V09", "V10", "V11", "V12"}
         };
         String[][] vagonPueblo = {
-            {"", "", "", "", ""},
-            {"", "", "", "", ""},
-            {"", "", "", "", ""}
+            {"P01", "P02", "P03", "P04", "P05"},
+            {"P06", "P07", "P08", "P09", "P10"},
+            {"P11", "P12", "P13", "P14", "P15"}
         };
 
         // Mostrar opciones de la aplicacion
         int opc_aplicacion = mostrarOpciones();
 
-        // Opcion 1
-        /*
-        int opcion = mostrarCategoriasBoleto();
-
-        switch (opcion) {
+        switch (opc_aplicacion) {
             case 1:
-                mostrarVagones(vagonTurista, "T");
+                int opc_boleto = mostrarCategoriasBoleto();
+                evaluarOpcionBoleto(vagonTurista, vagonVIP, vagonPueblo, opc_boleto);
+
                 break;
             case 2:
-                mostrarVagones(vagonVIP, "V");
                 break;
             case 3:
-                mostrarVagones(vagonPueblo, "P");
                 break;
             case 4:
+                break;
+            case 5:
+                break;
+            case 6:
                 salir();
                 break;
             default:
                 salir();
-        } */
+        }
     }
 
     public static int mostrarOpciones() {
@@ -67,7 +67,7 @@ public class Java_final_taller {
         System.out.println("1. Compra de Boletos");
         System.out.println("2. Pasajeros por vagon");
         System.out.println("3. Pasajeros general");
-        System.out.println("4. Ganancial");
+        System.out.println("4. Ganancias");
         System.out.println("5. Asientos vacios por vagon");
         System.out.println("6. Salir");
 
@@ -79,19 +79,13 @@ public class Java_final_taller {
         return pm_opcion;
     }
 
-    public static void mostrarVagones(String[][] pm_array, String pm_tipo) {
+    public static void mostrarVagones(String[][] pm_array) {
         int pm_fila = pm_array.length;
         int pm_columna = pm_array[0].length;
-        int contador = 1;
 
         for (int i = 0; i < pm_fila; i++) {
             for (int j = 0; j < pm_columna; j++) {
-                if (pm_array[i][j].equals("")) {
-                    System.out.print(pm_tipo + contador + "        ");
-                } else {
-                    System.out.print(pm_array[i][j] + "        ");
-                }
-                contador += 1;
+                System.out.print(pm_array[i][j] + "        ");
             }
             System.out.println("");
         }
@@ -113,6 +107,25 @@ public class Java_final_taller {
         } while (pm_opcion < 1 || pm_opcion > 4);
 
         return pm_opcion;
+    }
+
+    public static void evaluarOpcionBoleto(String[][] vg1, String[][] vg2, String[][] vg3, int pm_opcion) {
+        switch (pm_opcion) {
+            case 1:
+                mostrarVagones(vg1);
+                break;
+            case 2:
+                mostrarVagones(vg2);
+                break;
+            case 3:
+                mostrarVagones(vg3);
+                break;
+            case 4:
+                salir();
+                break;
+            default:
+                salir();
+        }
     }
 
     public static void salir() {
