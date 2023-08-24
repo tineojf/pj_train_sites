@@ -35,30 +35,48 @@ public class Java_final_taller {
             {"", "", "", "", ""}
         };
 
-        // Mostrar vagones
+        // Mostrar opciones de la aplicacion
+        int opc_aplicacion = mostrarOpciones();
+
+        // Opcion 1
         /*
-        mostrarVagones(vagonTurista, "T");
-        System.out.println("");
-        mostrarVagones(vagonVIP, "V");
-        System.out.println("");
-        mostrarVagones(vagonPueblo, "P");
-         */
-        // Mostrar boletos
         int opcion = mostrarCategoriasBoleto();
 
         switch (opcion) {
             case 1:
+                mostrarVagones(vagonTurista, "T");
                 break;
             case 2:
+                mostrarVagones(vagonVIP, "V");
                 break;
             case 3:
+                mostrarVagones(vagonPueblo, "P");
                 break;
             case 4:
                 salir();
                 break;
             default:
                 salir();
-        }
+        } */
+    }
+
+    public static int mostrarOpciones() {
+        Scanner scanner = new Scanner(System.in);
+        int pm_opcion = 0;
+
+        System.out.println("1. Compra de Boletos");
+        System.out.println("2. Pasajeros por vagon");
+        System.out.println("3. Pasajeros general");
+        System.out.println("4. Ganancial");
+        System.out.println("5. Asientos vacios por vagon");
+        System.out.println("6. Salir");
+
+        do {
+            System.out.println("Ingrese el tipo de vagon (1-6):");
+            pm_opcion = scanner.nextInt();
+        } while (pm_opcion < 1 || pm_opcion > 6);
+
+        return pm_opcion;
     }
 
     public static void mostrarVagones(String[][] pm_array, String pm_tipo) {
@@ -101,4 +119,18 @@ public class Java_final_taller {
         System.out.println("Fin del programa.");
         System.exit(0);
     }
+
+    public static void mostrarPasajeros(String[][] pm_array, String pm_tipo) {
+        int pm_fila = pm_array.length;
+        int pm_columna = pm_array[0].length;
+
+        for (int i = 0; i < pm_fila; i++) {
+            for (int j = 0; j < pm_columna; j++) {
+                if (!pm_array[i][j].equals("")) {
+                    System.out.println(pm_array[i][j] + " - " + pm_tipo);
+                }
+            }
+        }
+    }
+
 }
