@@ -64,9 +64,9 @@ public class Java_final_taller {
                 break;
             case 3:
                 System.out.println("LISTA PASAJEROS - GENERAL");
-                listarPasajero(vagonTurista, "Turista - ");
-                listarPasajero(vagonVIP, "VIP - ");
-                listarPasajero(vagonPueblo, "Pueblo- ");
+                listarPasajeros(vagonTurista, "Turista - ");
+                listarPasajeros(vagonVIP, "VIP - ");
+                listarPasajeros(vagonPueblo, "Pueblo - ");
                 break;
             case 4:
                 System.out.println("GANANCIAS POR VAGON");
@@ -94,6 +94,10 @@ public class Java_final_taller {
                 System.out.println(ganancia_total);
                 break;
             case 5:
+                System.out.println("LISTA ASIENTOS VACIOS");
+                listarVacios(vagonTurista, "Turista - ");
+                listarVacios(vagonVIP, "VIP - ");
+                listarVacios(vagonPueblo, "Pueblo - ");
                 break;
             case 6:
                 salir();
@@ -210,7 +214,7 @@ public class Java_final_taller {
         vg3[1][1] = "Olivia";
     }
 
-    public static void listarPasajero(String[][] pm_array, String pm_vagon) {
+    public static void listarPasajeros(String[][] pm_array, String pm_vagon) {
         int pm_fila = pm_array.length;
         int pm_columna = pm_array[0].length;
 
@@ -228,13 +232,13 @@ public class Java_final_taller {
 
         switch (pm_opcion) {
             case 1:
-                listarPasajero(vg1, "");
+                listarPasajeros(vg1, "");
                 break;
             case 2:
-                listarPasajero(vg2, "");
+                listarPasajeros(vg2, "");
                 break;
             case 3:
-                listarPasajero(vg3, "");
+                listarPasajeros(vg3, "");
                 break;
             case 4:
                 salir();
@@ -257,6 +261,19 @@ public class Java_final_taller {
             }
         }
         return ganancia;
+    }
+
+    public static void listarVacios(String[][] pm_array, String pm_vagon) {
+        int pm_fila = pm_array.length;
+        int pm_columna = pm_array[0].length;
+
+        for (int i = 0; i < pm_fila; i++) {
+            for (int j = 0; j < pm_columna; j++) {
+                if (pm_array[i][j].length() < 4) {
+                    System.out.println(pm_vagon + pm_array[i][j]);
+                }
+            }
+        }
     }
 
 }
