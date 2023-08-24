@@ -35,17 +35,34 @@ public class Java_final_taller {
             {"P11", "P12", "P13", "P14", "P15"}
         };
 
+        String[] arr_app = {
+            "1. Compra de Boletos", 
+            "2. Pasajeros por vagon",
+            "3. Pasajeros general",
+            "4. Ganancias",
+            "5. Asientos vacios por vagon",
+            "6. Salir"
+        };
+
+        String[] arr_boleto = {
+            "1. Turista - $100",
+            "2. VIP     - $80",
+            "3. Pueblo  - $10",
+            "4. Salir"
+        };
+
         // Habilitar compra boletos ficticia
         compraFicticiaAsientos(vagonTurista, vagonVIP, vagonPueblo);
 
         // Mostrar opciones de la aplicacion
-        int opc_aplicacion = mostrarOpciones();
+        System.out.println("FUNCIONALIDADES DE LA APLICACION");
+        int opc_aplicacion = mostrarArrayOpciones(arr_app, "la funcionalidad");
 
         switch (opc_aplicacion) {
             case 1:
-                int opc_boleto = mostrarCategoriasBoleto();
+                System.out.println("COMPRA DE BOLETOS");
+                int opc_boleto = mostrarArrayOpciones(arr_boleto, "la categoria");
                 evaluarOpcionBoleto(vagonTurista, vagonVIP, vagonPueblo, opc_boleto);
-
                 break;
             case 2:
                 break;
@@ -68,21 +85,18 @@ public class Java_final_taller {
         System.exit(0);
     }
 
-    public static int mostrarOpciones() {
+    public static int mostrarArrayOpciones(String[] pm_array, String pm_nombre) {
         Scanner scanner = new Scanner(System.in);
         int pm_opcion = 0;
 
-        System.out.println("1. Compra de Boletos");
-        System.out.println("2. Pasajeros por vagon");
-        System.out.println("3. Pasajeros general");
-        System.out.println("4. Ganancias");
-        System.out.println("5. Asientos vacios por vagon");
-        System.out.println("6. Salir");
+        for (String pm_array1 : pm_array) {
+            System.out.println(pm_array1);
+        }
 
         do {
-            System.out.println("Ingrese el tipo de vagon (1-6):");
+            System.out.println("Ingresa " + pm_nombre);
             pm_opcion = scanner.nextInt();
-        } while (pm_opcion < 1 || pm_opcion > 6);
+        } while (pm_opcion < 1 || pm_opcion > pm_array.length);
 
         return pm_opcion;
     }
@@ -98,24 +112,6 @@ public class Java_final_taller {
             }
             System.out.println("");
         }
-    }
-
-    public static int mostrarCategoriasBoleto() {
-        Scanner scanner = new Scanner(System.in);
-        int pm_opcion = 0;
-
-        System.out.println("COMPRA DE BOLETOS");
-        System.out.println("1. Turista - $100");
-        System.out.println("2. VIP     - $80");
-        System.out.println("3. Pueblo  - $10");
-        System.out.println("4. Salir");
-
-        do {
-            System.out.println("Ingrese el tipo de vagon (1-3):");
-            pm_opcion = scanner.nextInt();
-        } while (pm_opcion < 1 || pm_opcion > 4);
-
-        return pm_opcion;
     }
 
     public static void evaluarOpcionBoleto(String[][] vg1, String[][] vg2, String[][] vg3, int pm_opcion) {
